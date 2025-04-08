@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Táblázat – Web-programozás-1 Előadás Házi feladat</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Web-programozás-1 Előadás Házi feladat</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Főoldal</a></li>
+      <li class="active"><a href="tablazat.html">Táblázat</a></li>
+      <li><a href="html5.html">HTML5 API</a></li>
+      <li><a href="chart.html">ChartJS</a></li>
+      <li><a href="ajax.html">AJAX</a></li>
+      <li><a href="oojs.html">OOJS</a></li>
+    </ul>
+  </nav>
+
+  <aside>
+    <p>Ez a táblázatos rész, ahol CRUD műveleteket csinálunk JavaScript-tel.</p>
+  </aside>
+
+  <div class="content">
+    <h2>CRUD Táblázat</h2>
+
+    <form id="userForm">
+      <input type="text" id="name" placeholder="Név" required minlength="2" maxlength="30">
+      <input type="number" id="age" placeholder="Kor" required min="0" max="120">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="text" id="city" placeholder="Város" required minlength="2" maxlength="30">
+      <button type="submit">Hozzáadás</button>
+    </form>
+
+    <input type="text" id="search" placeholder="Keresés..." style="margin-top: 1rem; width: 100%; padding: 8px;">
+
+    <table id="userTable" style="margin-top: 1rem; width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th data-column="name">Név</th>
+          <th data-column="age">Kor</th>
+          <th data-column="email">Email</th>
+          <th data-column="city">Város</th>
+          <th>Művelet</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- JS ide fogja rakni a sorokat -->
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <p>Készítette: Te – JGCH8Q</p>
+  </footer>
+
+  <script src="../js/tablazat.js"></script>
+</body>
+</html>

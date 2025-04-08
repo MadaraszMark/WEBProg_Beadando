@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX – Web-programozás-1 Előadás Házi feladat</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Web-programozás-1 Előadás Házi feladat</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Főoldal</a></li>
+      <li><a href="tablazat.html">Táblázat</a></li>
+      <li><a href="html5.html">HTML5 API</a></li>
+      <li><a href="chart.html">ChartJS</a></li>
+      <li class="active"><a href="ajax.html">AJAX</a></li>
+      <li><a href="oojs.html">OOJS</a></li>
+    </ul>
+  </nav>
+
+  <aside>
+    <p>AJAX kapcsolat a gamf.nhely.hu szerverrel – élő CRUD API használat</p>
+  </aside>
+
+  <div class="content">
+    <h2>AJAX API CRUD műveletek</h2>
+
+    <form id="createForm">
+      <input type="text" id="name" placeholder="Név" required>
+      <input type="text" id="height" placeholder="Magasság" required>
+      <input type="text" id="weight" placeholder="Súly" required>
+      <button type="submit">Hozzáadás</button>
+    </form>
+
+    <form id="updateForm" style="margin-top: 20px;">
+      <input type="text" id="updateId" placeholder="ID frissítéshez">
+      <button type="button" id="getDataForId">Adatok betöltése</button><br><br>
+      <input type="text" id="updateName" placeholder="Név">
+      <input type="text" id="updateHeight" placeholder="Magasság">
+      <input type="text" id="updateWeight" placeholder="Súly">
+      <button type="submit">Frissítés</button>
+    </form>
+
+    <div style="margin-top: 30px;">
+      <button id="loadData">Adatok betöltése</button>
+      <div id="output"></div>
+      <p id="summary"></p>
+    </div>
+
+    <form id="deleteForm" style="margin-top: 20px;">
+      <input type="text" id="deleteId" placeholder="ID törléshez">
+      <button type="submit">Törlés</button>
+    </form>
+
+    <p id="feedback" style="margin-top: 20px;"></p>
+  </div>
+
+  <footer>
+    <p>Készítette: Madarász Márk – JGCH8Q</p>
+  </footer>
+
+  <script src="../js/ajax.js"></script>
+</body>
+</html>

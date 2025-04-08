@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 API-k – Web-programozás-1 Előadás Házi feladat</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Web-programozás-1 Előadás Házi feladat</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Főoldal</a></li>
+      <li><a href="tablazat.html">Táblázat</a></li>
+      <li class="active"><a href="html5.html">HTML5 API</a></li>
+      <li><a href="chart.html">ChartJS</a></li>
+      <li><a href="ajax.html">AJAX</a></li>
+      <li><a href="oojs.html">OOJS</a></li>
+    </ul>
+  </nav>
+
+  <aside>
+    <p>Itt 7 HTML5 API példát látsz egy helyen, kis magyarázatokkal.</p>
+  </aside>
+
+  <div class="content">
+    <h2>HTML5 API példák</h2>
+
+    <!-- Web Storage -->
+    <section>
+      <h3>1. Web Storage</h3>
+      <input type="text" id="storageInput" placeholder="Írj be valamit">
+      <button onclick="saveToStorage()">Mentés</button>
+      <p id="storageOutput"></p>
+    </section>
+
+    <!-- Web Worker -->
+    <section>
+      <h3>2. Web Worker</h3>
+      <button onclick="startWorker()">Számolás indítása</button>
+      <p id="workerOutput"></p>
+    </section>
+
+    <!-- Server-Sent Events -->
+    <section>
+      <h3>3. Server-Sent Events</h3>
+      <p>(Ez példában szimulálva lesz, mert lokálisan nem működik jól.)</p>
+    </section>
+
+    <!-- Geolocation -->
+    <section>
+      <h3>4. Geolocation API</h3>
+      <button onclick="getLocation()">Mutasd a helyzetem</button>
+      <p id="geoOutput"></p>
+    </section>
+
+    <!-- Drag and Drop -->
+    <section>
+      <h3>5. Drag and Drop</h3>
+      <div id="dragBox" draggable="true" style="width:100px;height:100px;background:red;"></div>
+      <div id="dropZone" style="width:200px;height:200px;border:2px dashed #333;margin-top:10px;"></div>
+    </section>
+
+    <!-- Canvas -->
+    <section>
+      <h3>6. Canvas</h3>
+      <canvas id="myCanvas" width="300" height="150" style="border:1px solid #000;"></canvas>
+    </section>
+
+    <!-- SVG -->
+    <section>
+      <h3>7. SVG</h3>
+      <svg width="200" height="100">
+        <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+        <text x="50" y="55" font-size="14" text-anchor="middle" fill="black">SVG</text>
+      </svg>
+    </section>
+  </div>
+
+  <footer>
+    <p>Készítette: Te – JGCH8Q</p>
+  </footer>
+
+  <script src="../js/html5.js"></script>
+</body>
+</html>

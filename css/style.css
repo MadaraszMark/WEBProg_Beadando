@@ -1,0 +1,169 @@
+/* Alapbeállítások */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+  }
+  
+  /* Fejléc */
+  header {
+    background-color: #1e1e1e;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Menü */
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+  }
+  
+  nav ul li {
+    flex: 1;
+  }
+  
+  nav ul li a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  nav ul li.active a,
+  nav ul li a:hover {
+    background-color: #555;
+  }
+  
+  /* Oldalsáv */
+  aside {
+    background-color: #eee;
+    padding: 15px;
+  }
+  
+  /* Tartalom */
+  .content {
+    padding: 20px;
+  }
+  
+  /* Lábléc */
+  footer {
+    background-color: #1e1e1e;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  #userTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  #userTable th,
+  #userTable td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  #userTable th {
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  
+  #userTable td button {
+    margin: 0 2px;
+    padding: 4px 6px;
+  }
+
+  .content section {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+  
+  .content section h3 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  /* Drag and drop design */
+  #dragBox {
+    border-radius: 5px;
+    cursor: grab;
+  }
+  
+  #dropZone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+  }
+  
+  /* Input & button egységesebb */
+  .content input[type="text"],
+  .content input[type="number"],
+  .content button {
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .content button {
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .content button:hover {
+    background-color: #555;
+  }
+  
+  /* Canvas alá egy kis térköz */
+  canvas {
+    margin-top: 10px;
+  }
+
+  /* Táblázat stílus a ChartJS oldalhoz */
+#numberTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+#numberTable th,
+#numberTable td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: center;
+}
+
+#numberTable tbody tr:hover {
+  background-color: #f0f8ff;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Kiemelt canvas */
+#myChart {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+  
+  
