@@ -97,7 +97,6 @@ body {
     color: #333;
   }
   
-  /* Drag and drop design */
   #dragBox {
     border-radius: 5px;
     cursor: grab;
@@ -110,7 +109,7 @@ body {
     background-color: #fafafa;
   }
   
-  /* Input & button egységesebb */
+
   .content input[type="text"],
   .content input[type="number"],
   .content button {
@@ -130,12 +129,10 @@ body {
     background-color: #555;
   }
   
-  /* Canvas alá egy kis térköz */
   canvas {
     margin-top: 10px;
   }
 
-  /* Táblázat stílus a ChartJS oldalhoz */
 #numberTable {
   width: 100%;
   border-collapse: collapse;
@@ -157,7 +154,6 @@ body {
   transition: background-color 0.2s ease-in-out;
 }
 
-/* Kiemelt canvas */
 #myChart {
   background-color: #fff;
   padding: 10px;

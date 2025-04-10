@@ -1,11 +1,9 @@
-const code = "JGCH8Qxyz123"; // <- Neptun + saját kódod
+const code = "JGCH8Qxyz123"; // <- Neptun + saját kiegészítés
+const serverUrl = "http://gamf.nhely.hu/ajax2/";
 
-const output = document.getElementById("output");
-const summary = document.getElementById("summary");
-const feedback = document.getElementById("feedback");
-
-// Segédfüggvény: üzenet
+// Segédfüggvény: visszajelzés megjelenítése
 function showMessage(msg, isError = false) {
+  const feedback = document.getElementById("feedback");
   feedback.textContent = msg;
   feedback.style.color = isError ? "red" : "green";
 }
@@ -13,84 +11,117 @@ function showMessage(msg, isError = false) {
 // CREATE
 document.getElementById("createForm").addEventListener("submit", (e) => {
   e.preventDefault();
+
   const name = document.getElementById("name").value.trim();
   const height = document.getElementById("height").value.trim();
   const weight = document.getElementById("weight").value.trim();
 
-  if (!name || !height || !weight || name.length > 30 || height.length > 30 || weight.length > 30) {
-    showMessage("Hibás adatok! Üres vagy túl hosszú mező.", true);
+  if (!name || !height || !weight || name.length > 100 || height.length > 100 || weight.length > 100) {
+    showMessage("Hibás adatok – üres vagy túl hosszú mező.", true);
     return;
   }
 
-  fetch("http://localhost:8080", {
+  const params = new URLSearchParams({
+    op: "create",
+    name,
+    height,
+    weight,
+    code,
+  });
+
+  fetch(serverUrl, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `op=create&name=${name}&height=${height}&weight=${weight}&code=${code}`
+    body: params,
   })
     .then(res => res.text())
-    .then(data => showMessage("Sikeres hozzáadás!"))
+    .then(data => {
+      showMessage(`Hozzáadás: ${data} rekord érintett.`);
+    })
     .catch(() => showMessage("Hiba történt CREATE közben.", true));
 });
 
-// READ – hibakeresős verzió
+// READ
 document.getElementById("loadData").addEventListener("click", () => {
-  fetch(`http://localhost:8080/?op=read&code=${code}`)
-    .then(res => res.text()) // ideiglenesen text
-    .then(text => {
-      try {
-        const data = JSON.parse(text); // JSON-né próbáljuk konvertálni
-        let html = "";
-        let heights = [];
+  const params = new URLSearchParams({
+    op: "read",
+    code,
+  });
 
-        data.list.forEach(item => {
-          html += `<p>ID: ${item.id}, Név: ${item.name}, Magasság: ${item.height}, Súly: ${item.weight}</p>`;
-          heights.push(parseFloat(item.height));
-        });
+  fetch(serverUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: params,
+  })
+    .then(res => res.json())
+    .then(data => {
+      const output = document.getElementById("output");
+      const summary = document.getElementById("summary");
 
-        output.innerHTML = html;
+      let html = "";
+      let heights = [];
 
-        const sum = heights.reduce((a, b) => a + b, 0);
-        const avg = (sum / heights.length).toFixed(2);
-        const max = Math.max(...heights);
+      data.list.forEach(item => {
+        html += `<p>ID: ${item.id}, Név: ${item.name}, Magasság: ${item.height}, Súly: ${item.weight}</p>`;
+        heights.push(parseFloat(item.height));
+      });
 
-        summary.textContent = `Összeg: ${sum}, Átlag: ${avg}, Legnagyobb: ${max}`;
-        showMessage("Adatok betöltve.");
-      } catch (e) {
-        console.error("Nem sikerült JSON-né alakítani:", text);
-        showMessage("Nem érvényes JSON válasz!", true);
-      }
+      output.innerHTML = html;
+
+      const sum = heights.reduce((a, b) => a + b, 0);
+      const avg = (sum / heights.length).toFixed(2);
+      const max = Math.max(...heights);
+
+      summary.textContent = `Összeg: ${sum}, Átlag: ${avg}, Max: ${max}`;
+      showMessage("Adatok betöltve.");
     })
-    .catch((err) => {
-      console.error("Hálózati hiba:", err);
-      showMessage("Hiba történt az adatok lekérésekor.", true);
-    });
+    .catch(() => showMessage("Hiba történt az adatok lekérésekor.", true));
 });
 
 // DELETE
 document.getElementById("deleteForm").addEventListener("submit", (e) => {
   e.preventDefault();
-  const id = document.getElementById("deleteId").value.trim();
 
+  const id = document.getElementById("deleteId").value.trim();
   if (!id) {
-    showMessage("Törléshez adj meg egy ID-t!", true);
+    showMessage("Törléshez add meg az ID-t!", true);
     return;
   }
 
-  fetch("http://localhost:8080", {
+  const params = new URLSearchParams({
+    op: "delete",
+    id,
+    code,
+  });
+
+  fetch(serverUrl, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `op=delete&id=${id}&code=${code}`
+    body: params,
   })
     .then(res => res.text())
-    .then(data => showMessage("Törlés sikeres."))
+    .then(data => showMessage(`Törlés: ${data} rekord érintett.`))
     .catch(() => showMessage("Hiba történt DELETE közben.", true));
 });
 
-// UPDATE – lekér adatokat az ID alapján
+// GET DATA BY ID
 document.getElementById("getDataForId").addEventListener("click", () => {
   const id = document.getElementById("updateId").value.trim();
+  if (!id) {
+    showMessage("Adj meg egy ID-t!", true);
+    return;
+  }
 
-  fetch(`http://localhost:8080/?op=read&code=${code}`)
+  const params = new URLSearchParams({
+    op: "read",
+    code,
+  });
+
+  fetch(serverUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: params,
+  })
     .then(res => res.json())
     .then(data => {
       const found = data.list.find(item => item.id === id);
@@ -103,10 +134,10 @@ document.getElementById("getDataForId").addEventListener("click", () => {
         showMessage("Nincs ilyen ID!", true);
       }
     })
-    .catch(() => showMessage("Hiba történt az ID lekérdezés közben.", true));
+    .catch(() => showMessage("Hiba történt ID lekérdezés közben.", true));
 });
 
-// UPDATE – adatok frissítése
+// UPDATE
 document.getElementById("updateForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -115,18 +146,27 @@ document.getElementById("updateForm").addEventListener("submit", (e) => {
   const height = document.getElementById("updateHeight").value.trim();
   const weight = document.getElementById("updateWeight").value.trim();
 
-  if (!id || !name || !height || !weight || name.length > 30 || height.length > 30 || weight.length > 30) {
-    showMessage("Hibás adatok! Üres vagy túl hosszú mező.", true);
+  if (!id || !name || !height || !weight || name.length > 100 || height.length > 100 || weight.length > 100) {
+    showMessage("Hibás adatok – üres vagy túl hosszú mező.", true);
     return;
   }
 
-  fetch("http://localhost:8080", {
+  const params = new URLSearchParams({
+    op: "update",
+    id,
+    name,
+    height,
+    weight,
+    code,
+  });
+
+  fetch(serverUrl, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `op=update&id=${id}&name=${name}&height=${height}&weight=${weight}&code=${code}`
+    body: params,
   })
     .then(res => res.text())
-    .then(data => showMessage("Frissítés sikeres!"))
+    .then(data => showMessage(`Frissítés: ${data} rekord érintett.`))
     .catch(() => showMessage("Hiba történt UPDATE közben.", true));
 });
 
