@@ -1,11 +1,9 @@
-/* Alap stílusok nullázása */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
-  /* Alap test */
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #121212;
@@ -15,7 +13,6 @@
     flex-direction: column;
   }
   
-  /* Alap gombstílus */
   button {
     cursor: pointer;
     background-color: #1f1f1f;
@@ -29,7 +26,6 @@
     background-color: #333;
   }
   
-  /* Input mezők */
   input[type="text"], input[type="number"] {
     background-color: #222;
     border: 1px solid #444;
@@ -38,7 +34,6 @@
     border-radius: 5px;
   }
   
-  /* Fejléc */
   header {
     background-color: #1e1e1e;
     padding: 20px;
@@ -56,7 +51,6 @@
     color: #aaa;
   }
   
-  /* Középre igazítás */
   main, .app-content {
     padding: 20px;
     width: 100%;
@@ -64,7 +58,6 @@
     margin: auto;
   }
   
-  /* Reszponzív elrendezés */
   @media (max-width: 600px) {
     button {
       font-size: 16px;
