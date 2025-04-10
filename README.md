@@ -1,2 +1,2 @@
 ## WEB-Programozás Beadandó  
-** Madarász Márk - JGCH8Q **  
+**Madarász Márk - JGCH8Q**  
