@@ -1,18 +1,15 @@
-// 1. Web Storage
 function saveToStorage() {
   const input = document.getElementById("storageInput").value;
   localStorage.setItem("myData", input);
   document.getElementById("storageOutput").textContent = "Elmentve: " + input;
 }
 
-// Betöltéskor jelenjen meg az elmentett adat
 window.addEventListener("DOMContentLoaded", () => {
   const saved = localStorage.getItem("myData");
   if (saved) {
       document.getElementById("storageOutput").textContent = "Korábban mentve: " + saved;
   }
 
-  // 6. Canvas újra-inicializálás DOM betöltéskor
   const canvas = document.getElementById("myCanvas");
   if (canvas && canvas.getContext) {
       const ctx = canvas.getContext("2d");
@@ -25,7 +22,6 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// 2. Web Worker
 let worker;
 function startWorker() {
   if (typeof(Worker) !== "undefined") {
@@ -40,7 +36,6 @@ function startWorker() {
   }
 }
 
-// 3. Server-Sent Events (szimulált példa időzítéssel)
 const sseOutput = document.getElementById("sseOutput");
 
 if (sseOutput) {
@@ -49,10 +44,9 @@ if (sseOutput) {
     counter++;
     const time = new Date().toLocaleTimeString();
     sseOutput.textContent = `Érkezett új adat (${counter}): ${time}`;
-  }, 5000); // 5 másodpercenként új "üzenet"
+  }, 5000);
 }
 
-// 4. Geolocation
 function getLocation() {
   const output = document.getElementById("geoOutput");
   if (!navigator.geolocation) {
@@ -86,8 +80,6 @@ function getLocation() {
   );
 }
 
-
-// 5. Drag and Drop
 const dragBox = document.getElementById("dragBox");
 const dropZone = document.getElementById("dropZone");
 
@@ -109,7 +101,6 @@ if (dragBox && dropZone) {
   });
 }
 
-// 8. SVG interakció
 const svgCircle = document.getElementById("svgCircle");
 
 svgCircle.addEventListener("click", () => {

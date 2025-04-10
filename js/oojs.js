@@ -1,4 +1,3 @@
-// Alaposztály
 class Person {
     constructor(name, age) {
       this.name = name;
@@ -10,7 +9,6 @@ class Person {
     }
   }
   
-  // Leszármazott osztály
   class Student extends Person {
     constructor(name, age, school, grade) {
       super(name, age);
@@ -23,16 +21,13 @@ class Person {
     }
   }
   
-  // DOM elemek
   const charactersDiv = document.getElementById("characters");
   const generateBtn = document.getElementById("generate");
   
-  // Példák generálása
   const exampleNames = ["Anna", "Bence", "Csilla", "Dani", "Eszter"];
   const schools = ["GAMF", "BME", "SZTE", "DE", "ELTE"];
   const grades = ["5.0", "4.5", "3.8", "4.0", "4.9"];
   
-  // Gomb esemény
   generateBtn.addEventListener("click", () => {
     const randomName = exampleNames[Math.floor(Math.random() * exampleNames.length)];
     const randomAge = Math.floor(Math.random() * 10) + 18;

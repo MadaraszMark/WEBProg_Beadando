@@ -1,14 +1,12 @@
-const code = "JGCH8Qxyz123"; // <- Neptun + saját kiegészítés
+const code = "JGCH8Qxyz123";
 const serverUrl = "http://gamf.nhely.hu/ajax2/";
 
-// Segédfüggvény: visszajelzés megjelenítése
 function showMessage(msg, isError = false) {
   const feedback = document.getElementById("feedback");
   feedback.textContent = msg;
   feedback.style.color = isError ? "red" : "green";
 }
 
-// CREATE
 document.getElementById("createForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -41,7 +39,6 @@ document.getElementById("createForm").addEventListener("submit", (e) => {
     .catch(() => showMessage("Hiba történt CREATE közben.", true));
 });
 
-// READ
 document.getElementById("loadData").addEventListener("click", () => {
   const params = new URLSearchParams({
     op: "read",
@@ -78,7 +75,6 @@ document.getElementById("loadData").addEventListener("click", () => {
     .catch(() => showMessage("Hiba történt az adatok lekérésekor.", true));
 });
 
-// DELETE
 document.getElementById("deleteForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -104,7 +100,6 @@ document.getElementById("deleteForm").addEventListener("submit", (e) => {
     .catch(() => showMessage("Hiba történt DELETE közben.", true));
 });
 
-// GET DATA BY ID
 document.getElementById("getDataForId").addEventListener("click", () => {
   const id = document.getElementById("updateId").value.trim();
   if (!id) {
@@ -137,7 +132,6 @@ document.getElementById("getDataForId").addEventListener("click", () => {
     .catch(() => showMessage("Hiba történt ID lekérdezés közben.", true));
 });
 
-// UPDATE
 document.getElementById("updateForm").addEventListener("submit", (e) => {
   e.preventDefault();
 

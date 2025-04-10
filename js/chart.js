@@ -1,8 +1,7 @@
 const table = document.getElementById("numberTable");
 const canvas = document.getElementById("myChart");
-let chart; // globális változó a diagramhoz
+let chart;
 
-// Hozz létre eseménykezelőt minden sorra
 Array.from(table.querySelectorAll("tbody tr")).forEach((row, index) => {
   row.addEventListener("click", () => {
     const values = Array.from(row.children).map(td => parseFloat(td.textContent));
@@ -44,7 +43,6 @@ function drawChart(data, rowIndex) {
     }
   };
 
-  // Ha már van diagram, töröljük
   if (chart) {
     chart.destroy();
   }
